@@ -33,7 +33,12 @@ The repository is organized as follows:
    ```bash
    cd DivyanshGoenka_Tutedude_Python_Assignments
    ```
-3. **Run the Python Files:**
+3. **Navigate to the concerned assignment directory**
+    ```bash
+   cd assignment_one
+   # ... and so on
+   ```
+4. **Run the Python Files:**
    ```bash
    python task_one.py
    python task_two.py
