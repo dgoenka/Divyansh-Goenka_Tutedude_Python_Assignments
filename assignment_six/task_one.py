@@ -54,6 +54,7 @@ def equalsClicked():
         case "/":
             if secondNum == 0:
                 tkinter.messagebox.showerror(title="Division by Zero", message="Division by zero is not allowed")
+                allClear()
                 return
             result = firstNum / secondNum
         case _:
