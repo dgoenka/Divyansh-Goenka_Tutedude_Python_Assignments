@@ -4,22 +4,13 @@ from tkinter import *
 firstNum = None
 selectedOperand = None
 
-
-def validate_number_input(new_text):
-    if new_text == "" or new_text.isdigit():
-        return True
-    else:
-        return False
-
-
 window = Tk()
 window.geometry("470x250")
 window.resizable(False, False)
 window.title("Calculator")
 calcVal = StringVar(window, value="0")
-e = Entry(window, textvariable=calcVal, font=('Arial', 30, 'bold'), width=25, justify='right', borderwidth=5,
-          validate='all',
-          validatecommand=(window.register(validate_number_input), '%P'))
+e = Entry(window, textvariable=calcVal, width=48, borderwidth=5,
+          validate='all')
 e.place(x=10, y=5)
 
 
