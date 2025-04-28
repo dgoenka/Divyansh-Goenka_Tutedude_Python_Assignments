@@ -14,8 +14,14 @@ e = Entry(window, textvariable=calcVal, width=48, borderwidth=5,
 e.place(x=10, y=5)
 
 
+def isInt(val):
+    return val == int(val)
+
+
 def numClicked(num):
-    currentNum = int(calcVal.get())
+    currentNum = float(calcVal.get())
+    if isInt(currentNum):
+        currentNum = int(currentNum)
     currentNum = currentNum * 10 + num
     calcVal.set(str(currentNum))
 
@@ -25,7 +31,9 @@ def operandClicked(operand):
     global selectedOperand
     if selectedOperand is not None:
         return
-    firstNum = int(calcVal.get())
+    firstNum = float(calcVal.get())
+    if isInt(firstNum):
+        firstNum = int(firstNum)
     selectedOperand = operand
     calcVal.set("0")
 
@@ -33,24 +41,24 @@ def operandClicked(operand):
 def equalsClicked():
     global firstNum
     global selectedOperand
-    secondNum = int(calcVal.get())
-    result = 0
+    secondNum = float(calcVal.get())
+    result: float = 0.0
     match selectedOperand:
         case "+":
-            result = firstNum + secondNum
+            result = float(firstNum) + secondNum
         case "-":
-            result = firstNum - secondNum
+            result = float(firstNum) - secondNum
         case "*":
-            result = firstNum * secondNum
+            result = float(firstNum) * secondNum
         case "/":
             if secondNum == 0:
                 tkinter.messagebox.showerror(title="Division by Zero", message="Division by zero is not allowed")
                 allClear()
                 return
-            result = firstNum / secondNum
+            result = float(firstNum) / secondNum
         case _:
             return
-    calcVal.set(str(result))
+    calcVal.set(str(int(result) if isInt(result) else result))
     firstNum = None
     selectedOperand = None
 
